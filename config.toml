@@ -58,10 +58,10 @@ licenses = [
 # Footer links
 links = [
     { url = "https://github.com/lansyin", name = "Github" },
-    { url = "https://twitter.com/lansyin", name = "Twitter" },
+    { url = "https://x.com/lansyin", name = "X" },
     { url = "https://instagram.com/lansyin__", name = "Instagram" },
     { url = "mailto:catsalwaysmeow@outlook.com", name = "catsalwaysmeow@outlook.com" },
 ]
 
 # Footer message
-blessing = "Wishing my writings benefit you. "
+blessing = "Wishing my posts benefit you. "
