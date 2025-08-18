@@ -27,5 +27,5 @@ Recently, I struggled to learn about the basics of VSCode extension development 
 Today, I discovered that the root cause lies in the "Switch to this IME" option in the IME settings, which occupies `` Ctrl+` `` by default. And disabling it just solved the issue. So, all my previous work has been pointless all along. What a dramatic turn of events...
 
 [issu]: https://github.com/Microsoft/vscode/issues/63659
-[proj]: https://github.com/lanlytt/vscode-cjk-toggle-terminal-fixer
-[ext]: https://github.com/lanlytt/ctrl-oem3
+[proj]: https://github.com/lansyin/vscode-cjk-toggle-terminal-fixer
+[ext]: https://github.com/lansyin/ctrl-oem3
