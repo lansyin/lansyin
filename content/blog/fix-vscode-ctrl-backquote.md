@@ -14,7 +14,7 @@ Yesterday, I encountered this [issue][issu] while coding with Visual Studio Code
 While it would be ideal to implement the fixer as a VSCode extension, I'm not familiar with front-end development. Currently, the fixer runs continuously in the background whenever the system is running, leading to some unnecessary troubles:
 
 - The message forwarding is achieved by a simple mimicking. Sometimes it causes unexpected behavior in other programs.
-- If users are playing games, it could be disastrous if the fixer is flagged as a cheat program.
+- Users may play games, and it could be disastrous if the fixer were flagged as a cheat program.
 
 To tackle these troubles, the fixer implements a naive detection. It operates only if the title of the active window ends with ` - Visual Studio Code` or ` - VSCode`.
 
