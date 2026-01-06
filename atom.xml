@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Little Zeal, </title>
+    <subtitle>Where Little Lan write about her personal growth. </subtitle>
+    <link href="https://lanlan.moe/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://lanlan.moe"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-05-01T00:00:00+00:00</updated>
+    <id>https://lanlan.moe/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Fixing Ctrl+Backtick in VSCode</title>
+        <published>2023-06-25T00:00:00+00:00</published>
+        <updated>2024-05-01T00:00:00+00:00</updated>
+        <author>
+          <name>lansyin</name>
+        </author>
+        <link rel="alternate" href="https://lanlan.moe/blog/fix-vscode-ctrl-backquote/" type="text/html"/>
+        <id>https://lanlan.moe/blog/fix-vscode-ctrl-backquote/</id>
+        
+        <summary type="html">&lt;p&gt;Yesterday, I encountered this &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;Microsoft&#x2F;vscode&#x2F;issues&#x2F;63659&quot;&gt;issue&lt;&#x2F;a&gt; while coding with Visual Studio Code. The default terminal shortcut &lt;code&gt;Ctrl+`&lt;&#x2F;code&gt; didn&#x27;t work on my new laptop. After some research, I found that some CJK keyboards&#x2F;IMEs may reserve this shortcut for internal use, and the reserved key can still be used globally. So I tried to write a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;lansyin&#x2F;vscode-cjk-toggle-terminal-fixer&quot;&gt;fixer&lt;&#x2F;a&gt; to register it as a global hotkey and forward its keypress messages. Fortunately, it worked.&lt;&#x2F;p&gt;
+</summary>
+        
+    </entry>
+</feed>
