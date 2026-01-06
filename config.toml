@@ -2,7 +2,7 @@
 base_url = "https://lanlan.moe"
 
 # The default author for pages
-author = "Lan Lytt"
+author = "lansyin"
 
 # The site title and description; used in feeds by default.
 title = "Little Zeal, "
@@ -59,9 +59,9 @@ licenses = [
 links = [
     { url = "https://github.com/lansyin", name = "Github" },
     { url = "https://x.com/lansyin", name = "X" },
-    { url = "https://instagram.com/lansyin__", name = "Instagram" },
-    { url = "mailto:catsalwaysmeow@outlook.com", name = "catsalwaysmeow@outlook.com" },
+    { url = "https://instagram.com/lansyin0v0", name = "Instagram" },
+    { url = "mailto:lansyin@foxmail.com", name = "lansyin@foxmail.com" },
 ]
 
 # Footer message
-blessing = "Wishing my posts benefit you. "
+blessing = "Wishing my posts would benefit you. "
