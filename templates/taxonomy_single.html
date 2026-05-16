@@ -1,0 +1,23 @@
+{% extends "common/base.html" %}
+{% import "common/macros.html" as macros %}
+
+{% block title %}
+  {{ term.name | capitalize }} / {{ taxonomy.name | capitalize }}
+{% endblock title %}
+
+{% block main %}
+  {% if paginator is defined %}
+    {% set pages = paginator.pages %}
+    {% block taxonomy_single_main %}
+    {% endblock taxonomy_single_main %}
+    {{ macros::gen_paginator(paginator=paginator) }}
+  {% else %}
+    {% set pages = term.pages %}
+    {% block taxonomy_single_main %}
+    {% endblock taxonomy_single_main %}
+  {% endif %}
+{% endblock main %}
+
+{% block taxonomy_single_main %}
+  {{ macros::render_list(pages=pages) }}
+{% endblock taxonomy_single_main %}

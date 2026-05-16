@@ -1,0 +1,7 @@
+{% set cname = load_data(path="/static/CNAME", format="plain", required=false) | trim | lower %}
+{% if cname is string and config.mode == "build" %}
+  {% set configured_domain = config.base_url | trim | lower | split(pat="://") | nth(n=1) %}
+  {% if cname != configured_domain %}
+    {{ throw(message="CNAME=`" ~ cname ~ "` and config.base_url=`"~ config.base_url ~"` aren't consistent") }}
+  {% endif %}
+{% endif %}

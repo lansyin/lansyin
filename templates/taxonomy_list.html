@@ -1,0 +1,15 @@
+{% extends "common/base.html" %}
+
+{% block title %}
+  {{ taxonomy.name | capitalize }} / Taxonomy
+{% endblock title %}
+
+{% block main %}
+  <ul class="term-list">
+    {% for term in terms %}
+      <li class="term">
+        <a href="{{ term.permalink }}">{{ term.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock main %}
