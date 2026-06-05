@@ -1,0 +1,24 @@
+{% extends "common/base.html" %}
+{% import "common/macros.html" as macros %}
+
+{% block title %}
+  {{ section.title }}
+{% endblock title %}
+
+{% block main %}
+  {% if paginator is defined %}
+    {% set pages = paginator.pages %}
+    {% block section_main %}
+    {% endblock section_main %}
+    {{ macros::gen_paginator(paginator=paginator) }}
+  {% else %}
+    {% set pages = section.pages %}
+    {% block section_main %}
+    {% endblock section_main %}
+  {% endif %}
+{% endblock main %}
+
+{% block section_main %}
+  {{ section.content | safe }}
+  {{ macros::render_list(pages=pages) }}
+{% endblock section_main %}

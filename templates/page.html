@@ -1,0 +1,24 @@
+{% extends "common/base.html" %}
+
+{% block title %}
+  {{ page.title }}
+{% endblock title %}
+
+{% block main %}
+  <article class="post-detail">
+    <h1 class="title">{{ page.title }}</h1>
+    {% if page.date is string %}
+      <div class="date">
+        <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+      </div>
+    {% endif %}
+    <section class="body">{{ page.content | safe }}</section>
+    <nav class="tags">
+      {% if "tags" in page.taxonomies %}
+        {% for tag in page.taxonomies["tags"] %}
+          <div><a href="{{ get_taxonomy_url(kind='tags', name=tag) }}">{{tag}}</a></div>
+        {% endfor %}
+      {% endif %}
+    </nav>
+  </article>
+{% endblock main %}
