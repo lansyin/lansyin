@@ -1,0 +1,14 @@
+{% extends "common/base.html" %}
+
+{% block title %}
+  404: Page not found
+{% endblock title %}
+
+{% block main %}
+  <article>
+    <h1>404: Page not found</h1>
+    <section>
+      Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="{{ config.base_url }}">Head back home</a> to try finding it again. 
+    </section>
+  </article>
+{% endblock main %}

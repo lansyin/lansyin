@@ -1,0 +1,10 @@
+{% import "common/macros.html" as macros %}
+
+<section class="sc-licenses">
+  {% for module in config.extra.licenses %}
+    <section>
+      <h3><a href="{{module.link}}">{{module.name}}</a></h3>
+      <pre>{{ macros::load_license(module=module) }}</pre>
+    </section>
+  {% endfor %}
+</section>

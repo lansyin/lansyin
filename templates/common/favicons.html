@@ -1,0 +1,25 @@
+{# For modern browsers, perferred #}
+<link rel="icon" type="image/svg+xml" href="{{ get_url(path='favicon.svg') }}">
+
+{# For all browsers #}
+{% set favicon_32x32 = resize_image(path="favicon.png", width=32, height=32) %}
+<link rel="icon" type="image/png" sizes="32x32" href="{{ favicon_32x32.url }}">
+{% set favicon_16x16 = resize_image(path="favicon.png", width=16, height=16) %}
+<link rel="icon" type="image/png" sizes="16x16" href="{{ favicon_16x16.url }}">
+
+{# For Google and Android #}
+{% set favicon_48x48 = resize_image(path="favicon.png", width=48, height=48) %}
+<link rel="icon" type="image/png" sizes="48x48" href="{{ favicon_48x48.url }}">
+{% set favicon_192x192 = resize_image(path="favicon.png", width=192, height=192) %}
+<link rel="icon" type="image/png" sizes="192x192" href="{{ favicon_192x192.url }}">
+
+{# For iPad #}
+{% set favicon_167x167 = resize_image(path="favicon.png", width=167, height=167) %}
+<link rel="apple-touch-icon" type="image/png" sizes="167x167" href="{{ favicon_167x167.url }}">
+
+{# For iPhone #}
+{% set favicon_180x180 = resize_image(path="favicon.png", width=180, height=180) %}
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="{{ favicon_180x180.url }}">
+
+{# For legacy browsers #}
+<link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="{{ get_url(path='favicon.ico') }}">

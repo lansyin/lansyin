@@ -1,0 +1,55 @@
+{# Checking configurations #}
+{% include "common/assertions.html" %}
+{# The basic website layout, extended by almost all templates #}
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    {# Enable responsiveness on mobile devices #}
+    {# viewport-fit=cover is to support iPhone X rounded corners and notch in landscape #}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
+
+    {# Title block #}
+    <title>{% block title %}{{ config.extra.slogan }}{% endblock title %}</title>
+
+    {# Stylesheets #}
+    <link rel="stylesheet" href="{{ get_url(path='style.css') }}">
+    <link rel="stylesheet" href="{{ get_url(path='print.css') }}" media="print">
+    
+    {# Site icons #}
+    {% include "common/favicons.html" %}
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="content-upper">
+        <header>
+          <div class="site-slogan"><a href="{{ config.base_url }}">{{ config.extra.slogan }}</a></div>
+          <nav class="site-nav">
+            {% set blog = get_section(path="blog/_index.md") %}
+            {% set tags = get_taxonomy(kind="tags") %}
+            <div><a href="{{ blog.permalink }}">Posts</a></div>
+            <div><a href="{{ tags.permalink }}">Tags</a></div>
+          </nav>
+        </header>
+        <main>
+          <div class="main-inner">
+            {% block main %}
+            {% endblock main %}
+          </div>
+        </main>
+      </div>
+      <footer>
+        <a href="{{ get_url(path='@/licenses.md')}}">Licenses</a> <span class="footer-link-separator">|</span>
+        <a href="{{ get_url(path='atom.xml')}}">Feed</a> <span class="footer-link-separator">|</span>
+        {% for link in config.extra.links %}
+          <a href="{{link.url}}">{{link.name}}</a><sup>+</sup> <span class="footer-link-separator">|</span>
+        {% endfor %}
+        <span class="blessing">{{ config.extra.blessing }}</span>
+      </footer>
+    </div>
+
+  </body>
+</html>

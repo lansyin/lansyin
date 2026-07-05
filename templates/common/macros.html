@@ -1,0 +1,80 @@
+{% macro load_license(module) %}
+  {%- set path = "" -%}
+  {%- if "lic_3rd" in module -%}
+    {%- set path = "3rdparty/" ~ module.lic_3rd -%}
+  {%- elif "lic_path" in module -%}
+    {%- set path = module.lic_path -%}
+  {%- elif "lic_text" in module -%}
+    {%- set license = module.lic_text -%}
+  {%- else -%}
+    {{ throw(message="expect one of 'lic_3rd', 'lic_path', or 'lic_text', found none. ") }}
+  {%- endif -%}
+  {%- if path != "" -%}
+    {%- set license = load_data(path=path ~ "/LICENSE", format="plain", required=false) -%}
+    {%- if not license is string -%}
+      {%- set license = load_data(path=path, format="plain") -%}
+    {%- endif -%}
+  {%- endif -%}
+  {{license}}
+{% endmacro load_license %}
+
+{% macro gen_paginator(paginator) %}
+  <nav class="paginator">
+    {% if paginator.previous %}
+      <div><a class="previous" href="{{ paginator.previous }}">&#8249; Previous</a></div>
+    {% endif %}
+    {% if paginator.next %}
+      <div><a class="next" href="{{ paginator.next }}">Next &#8250;</a></div>
+    {% endif %}
+  </nav>
+{% endmacro gen_paginator %}
+
+{% macro gen_post_entry(page) %}
+  <section class="post-entry">
+    <h2 class="title">
+        <a href="{{ page.permalink }}">
+          {{ page.title | safe }}
+        </a>
+    </h2>
+    <div class="date">
+      {% if page.date == page.updated %}
+      <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+      {% else %}
+      <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time> ~ <time datetime="{{ page.updated }}">{{ page.updated | date(format="%B %d, %Y") }}</time>
+      {% endif %}
+    </div>
+    <div class="summary">
+      {{ page.summary | safe }}
+    </div>
+    <div class="more"><a href="{{ page.permalink }}">Read more &#8250;</a></div>
+  </section>
+{% endmacro gen_post_entry %}
+
+{% macro render_list(pages) %}
+  {% for page in pages %}
+    {{ self::gen_post_entry(page=page) }}
+  {% endfor %}  
+{% endmacro render_list %}
+
+{% macro render_all(limit) %}
+  {% set blogs = get_section(path="blog/_index.md") %}
+
+  {% set_global sections = [blogs] %}
+  {% set_global pages = [] %}
+  {% for section in sections %}
+    {% for page in section.pages %}
+      {% set_global pages = pages | concat(with=page) %}
+    {% endfor %}
+  {% endfor %}
+
+  {% if limit >= 0 %}
+    {% set_global pages = pages | slice(end = limit)%}
+  {% endif %}
+  {{ self::render_list(pages=pages) }}
+{% endmacro render_all %}
+
+{% macro render_featured(limit) %}
+  {% set featured = get_taxonomy_term(kind="tags", term="featured", required=false) %}
+  {% set pages = featured.pages | slice(end = limit)%}
+  {{ self::render_list(pages=featured.pages) }}
+{% endmacro render_featured %}

@@ -1,0 +1,12 @@
+{% import "common/macros.html" as macros %}
+{% extends "common/base.html" %}
+
+{% block title %}
+  {{ section.title }}
+{% endblock title %}
+
+{% block main %}
+  {{ section.content | safe }}
+
+  {{ macros::render_all(limit=7) }}
+{% endblock main %}
